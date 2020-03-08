@@ -12,10 +12,11 @@ Run `pip install -r requirements.txt` to install any dependencies.
 
 ### Install Postman
 
-Follow instructions on the Postman docs to install and run postman. Once postman is running, import the collection `./udacity-fsnd-flaskrecap.postman_collection.json`.
+Follow instructions on the Postman docs to install and run postman. Once postman is running, import the collection `./flaskrecap.postman_collection.json`.
 
 ### Run the Server
-On first run, execute `export FLASK_APP=FlaskRecap.py`. Then run `flask run --reload` to run the developer server.
+On first run, execute `export FLASK_APP=app.py`. Then run `flask run --reload` to run the developer server.
+Or you can directly run `python app.py`
 
 ## Credits
 All credits go to Full Stack nanodegree program"s resources offered by Udacity.
