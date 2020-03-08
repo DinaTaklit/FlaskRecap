@@ -31,6 +31,16 @@ def create_app(test_config=None):
         return jsonify({'greeting': greetings[lang
         ]})
 
+    # Post a greeting 
+    @app.route('/greeting', methods=['POST'])
+    def greeting_add():
+        info = request.get_json() # get json request
+        if('lang' not in info or 'greeting' not in info):
+            abort(422)
+        greetings[info['lang']] = info['greeting']
+        return jsonify({'greetings':greetings})
+    
+    # Handle errors
     @app.errorhandler(404)
     def not_found(error):
         return jsonify({
@@ -38,7 +48,17 @@ def create_app(test_config=None):
             "error":404,
             "message":"resource not found"
         }),404
+    
+    @app.errorhandler(422)
+    def unprocessable(error):
+        return jsonify({
+            "success": False,
+            "error": 422,
+            "message": "unprocessable"
+        }),422
+    
 
+    # Return the app 
     return app
 if __name__ == '__main__':
     app = create_app()
